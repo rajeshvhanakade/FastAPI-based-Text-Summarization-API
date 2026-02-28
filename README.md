@@ -1,137 +1,188 @@
-# End to end Text-Summarizer-Project
+<h1>📊 Log Classification API</h1>
 
-## Workflows
+<p>
+A RESTful API built using <strong>FastAPI</strong> for automated log classification.  
+The system accepts a CSV file containing log sources and messages, applies a machine learning or rule-based classifier,
+and returns a new CSV file with predicted target labels.
+</p>
 
-1. Update config.yaml
-2. Update params.yaml
-3. Update entity
-4. Update the configuration manager in src config
-5. Update the components
-6. Update the pipeline
-7. Update the main.py
-8. Update the app.py
+<div class="section">
+    <span class="badge">Python</span>
+    <span class="badge">FastAPI</span>
+    <span class="badge">Pandas</span>
+    <span class="badge">ML Classification</span>
+    <span class="badge">REST API</span>
+</div>
 
-# How to run?
-### STEPS:
+<hr>
 
-Clone the repository
+<div class="section">
+<h2>🚀 Features</h2>
+<ul>
+    <li>📁 Upload CSV file for batch log classification</li>
+    <li>🧠 Automatic log categorization using a classifier</li>
+    <li>📤 Returns classified CSV file as output</li>
+    <li>⚡ High-performance FastAPI backend</li>
+    <li>🧪 Built-in validation for input schema</li>
+    <li>🔐 Error handling for invalid files and formats</li>
+</ul>
+</div>
 
-```bash
-git clone https://github.com/entbappy/End-to-end-Text-Summarization
+<hr>
 
-```
- 
- ## STEP 01- Create a conda environment after opening the repository
+<div class="section">
+<h2>🧠 System Workflow</h2>
 
- conda create -n summary python=3.8 -y
+<pre>
+Client Uploads CSV
+        │
+        ▼
+FastAPI Endpoint (/classify)
+        │
+        ▼
+Pandas DataFrame Loader
+        │
+        ▼
+Log Classifier (classify.py)
+        │
+        ▼
+Append Target Label Column
+        │
+        ▼
+Return Output CSV
+</pre>
 
-conda activate summary
+</div>
 
+<hr>
 
-## STEP 02- install the requirements
+<div class="section">
+<h2>📁 Project Structure</h2>
 
+<pre>
+log-classification-api/
+│
+├── main.py              # FastAPI application
+├── classify.py          # Log classification logic
+├── resources/
+│   └── output.csv       # Generated classified output
+├── requirements.txt
+└── README.html
+</pre>
+
+</div>
+
+<hr>
+
+<div class="section">
+<h2>⚙️ Installation</h2>
+
+<h3>1️⃣ Clone Repository</h3>
+<pre>
+git clone https://github.com/your-username/log-classification-api.git
+cd log-classification-api
+</pre>
+
+<h3>2️⃣ Create Virtual Environment</h3>
+<pre>
+python -m venv venv
+source venv/bin/activate   (Linux/Mac)
+venv\Scripts\activate      (Windows)
+</pre>
+
+<h3>3️⃣ Install Dependencies</h3>
+<pre>
 pip install -r requirements.txt
+</pre>
+</div>
+
+<hr>
+
+<div class="section">
+<h2>▶️ Run the API Server</h2>
+
+<pre>
+uvicorn main:app --reload
+</pre>
+
+<p>
+Server will start at:
+</p>
+
+<pre>
+http://127.0.0.1:8000
+</pre>
+
+</div>
+
+<hr>
+
+<div class="section">
+<h2>📤 API Usage</h2>
+
+<h3>Endpoint</h3>
+<pre>
+POST /classify/
+</pre>
+
+<h3>Input CSV Format</h3>
+<pre>
+source,log_message
+auth_service,User login failed
+db_service,Connection timeout
+</pre>
+
+<h3>Response</h3>
+<p>
+Returns a CSV file with an additional column:
+</p>
+
+<pre>
+source,log_message,target_label
+auth_service,User login failed,Authentication Error
+db_service,Connection timeout,Database Error
+</pre>
+
+</div>
+
+<hr>
+
+<div class="section">
+<h2>🛠 Technology Stack</h2>
+<ul>
+    <li>Python</li>
+    <li>FastAPI</li>
+    <li>Pandas</li>
+    <li>Uvicorn</li>
+    <li>Custom classification module</li>
+</ul>
+</div>
+
+<hr>
+
+<div class="section">
+<h2>🔐 Input Validation</h2>
+<ul>
+    <li>Only CSV files are accepted</li>
+    <li>Required columns: <code>source</code>, <code>log_message</code></li>
+    <li>Returns HTTP 400 for invalid file format</li>
+    <li>Returns HTTP 500 for server-side errors</li>
+</ul>
+</div>
+
+<hr>
+
+<div class="section">
+<h2>🧑‍💻 Author</h2>
+<p>
+<strong>Rajesh Vhankade</strong><br>
+AI / ML Developer<br>
+Pune, India
+</p>
+</div>
 
 
-Finally run the following command
+</div>
 
-python app.py
-
-Now,
-
-open up you local host and port
-
-
-Author : Rajesh Vhankade
-
-Fresher Data Scientist
-
-Email: vhankadenrajesh@gmail.com
-
-
-# AWS-CICD-Deployment-with-Github-Actions
-## 1. Login to AWS console.
-## 2. Create IAM user for deployment
-
-#with specific access
-
-1. EC2 access : It is virtual machine
-
-2. ECR: Elastic Container registry to save your docker image in aws
-
-
-#Description: About the deployment
-
-1. Build docker image of the source code
-
-2. Push your docker image to ECR
-
-3. Launch Your EC2 
-
-4. Pull Your image from ECR in EC2
-
-5. Lauch your docker image in EC2
-
-
-#Policy:
-
-1. AmazonEC2ContainerRegistryFullAccess
-
-2. AmazonEC2FullAccess
-
-
-## 3. Create ECR repo to store/save docker image
-
-
-- Save the URI: 566373416292.dkr.ecr.us-east-1.amazonaws.com/text-s
-
-4. Create EC2 machine (Ubuntu)
-
-5. Open EC2 and Install docker in EC2 Machine:
-
-
-#optinal
-
-sudo apt-get update -y
-
-sudo apt-get upgrade
-
-#required
-
-curl -fsSL https://get.docker.com -o get-docker.sh
-
-sudo sh get-docker.sh
-
-sudo usermod -aG docker ubuntu
-
-newgrp docker
-
-
-
-6. Configure EC2 as self-hosted runner:
-
-setting>actions>runner>new self hosted runner> choose os> then run command one by one
-
-
-7. Setup github secrets:
-
-AWS_ACCESS_KEY_ID=
-
-AWS_SECRET_ACCESS_KEY=
-
-AWS_REGION = us-east-1
-
-AWS_ECR_LOGIN_URI = demo>>  566373416292.dkr.ecr.ap-south-1.amazonaws.com
-
-ECR_REPOSITORY_NAME = simple-app
-
-
-
-This code replicates the content and formatting of the README file. Let me know if you need further assistance!
-
-
-
-
-
-
-
+</body>
+</html>
