@@ -172,13 +172,6 @@ db_service,Connection timeout,Database Error
 
 <hr>
 
-<div class="section">
-<h2>🧑‍💻 Author</h2>
-<p>
-<strong>Rajesh Vhankade</strong><br>
-AI / ML Developer<br>
-Pune, India
-</p>
 </div>
 
 
